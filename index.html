@@ -1,0 +1,192 @@
+
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Distributed Asynchronous Device Speech Enhancement via Windowed Cross-Attention</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta name="theme-color" content="#563d7c">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+<!-- Page Content -->
+<div class="text-center">
+    <div class="row">
+        <div class="col-lg-12">
+            <br>
+            <h1 class="mt-5 mb-3">Distributed Asynchronous Device Speech Enhancement via Windowed Cross-Attention</h1>
+            <p class="lead">
+                Anonymous authors
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="section mt-5 mb-5">
+        <div class="abstract">
+            <h2>Abstract</h2>
+            <hr>
+            <p>
+                The increasing number of microphone-equipped personal devices offers great flexibility and potential using them as ad-hoc microphone arrays in dynamic meeting environments.
+However, most existing approaches are designed for time-synchronized microphone setups, a condition that may not hold in real-world meeting scenarios, where time latency and clock drift vary across devices.
+Under such conditions, we found transform-average-concatenate (TAC), a popular module for neural multi-microphone processing, insufficient in handling time-asynchronous microphones. 
+In response, we propose a windowed cross-attention module capable of dynamically aligning features between all microphones. 
+This module is invariant to both the permutation and the number of microphones and can be easily integrated into existing models. Furthermore, we propose an optimal training target for multi-talker environments.
+We evaluated our approach in a multi-microphone noisy reverberant setup with unknown time latency and clock drift of each microphone.
+Experimental results show that our method outperforms TAC on both iFaSNet and CRUSE models, offering faster convergence and improved learning, demonstrating the efficacy of the windowed-cross-attention module for asynchronous microphone setups.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="">Listening Samples</h2>
+        <hr>
+
+        <!-- 
+        <div class="section mb-5">
+            <p>
+                Some explanation
+            </p>
+        </div>
+         -->
+
+        <h3 class="">Real recordings from 3-6 separate devices</h3>
+        <hr>
+
+        <table class="table table-sm text-center" style="vertical-align: middle;">
+            <tr>
+                <th class="audio-col">Description</th>
+                <th class="audio-col">Mixture</th>
+                <th class="audio-col">CRUSE-WAC</th>
+                <th class="img-col">Input streams</th>
+            </tr>
+
+            <tr>
+                <td>
+                    Example 1
+                </td>
+                <td>
+                    <audio controls="controls" class="player" preload="metadata">
+                        <source src="client_recordings_mono/10-25-2024_conf_room_vegas_session_0_cut_2_s1_ne.wav" type="audio/wav">
+                        Unsupported browser.
+                    </audio>
+                </td>
+                <td>
+                    <audio controls="controls" class="player" preload="metadata">
+                        <source src="cruse64-byod-wac5-qkv-specout-sum/10-25-2024_conf_room_vegas_session_0_cut_2_s1_ne.wav" type="audio/wav">
+                        Unsupported browser.
+                    </audio>
+                </td>
+                <td>
+                    <img class="img-fluid" src="img/10-25-2024_conf_room_vegas_session_0_cut_2_s1_ne.png" style="width:400px"><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Example 2
+                </td>
+                <td>
+                    <audio controls="controls" class="player" preload="metadata">
+                        <source src="client_recordings_mono/10-25-2024_conf_room_vegas_session_0_cut_7_s1_ne.wav" type="audio/wav">
+                        Unsupported browser.
+                    </audio>
+                </td>
+                <td>
+                    <audio controls="controls" class="player" preload="metadata">
+                        <source src="cruse64-byod-wac5-qkv-specout-sum/10-25-2024_conf_room_vegas_session_0_cut_7_s1_ne.wav" type="audio/wav">
+                        Unsupported browser.
+                    </audio>
+                </td>
+            <td>
+                <img class="img-fluid" src="img/10-25-2024_conf_room_vegas_session_0_cut_7_s1_ne.png" style="width:400px"><br>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    Example 3
+                </td>
+                <td>
+                    <audio controls="controls" class="player" preload="metadata">
+                        <source src="client_recordings_mono/11-07-2024_conf_room_vegas_session_0_cut_0_s0_ne.wav" type="audio/wav">
+                        Unsupported browser.
+                    </audio>
+                </td>
+                <td>
+                    <audio controls="controls" class="player" preload="metadata">
+                        <source src="cruse64-byod-wac5-qkv-specout-sum/11-07-2024_conf_room_vegas_session_0_cut_0_s0_ne.wav" type="audio/wav">
+                        Unsupported browser.
+                    </audio>
+                </td>
+            <td>
+                <img class="img-fluid" src="img/11-07-2024_conf_room_vegas_session_0_cut_0_s0_ne.png" style="width:400px"><br>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    Example 4
+                </td>
+                <td>
+                    <audio controls="controls" class="player" preload="metadata">
+                        <source src="client_recordings_mono/11-07-2024_conf_room_vegas_session_0_cut_4_s0_ne.wav" type="audio/wav">
+                        Unsupported browser.
+                    </audio>
+                </td>
+                <td>
+                    <audio controls="controls" class="player" preload="metadata">
+                        <source src="cruse64-byod-wac5-qkv-specout-sum/11-07-2024_conf_room_vegas_session_0_cut_4_s0_ne.wav" type="audio/wav">
+                        Unsupported browser.
+                    </audio>
+                </td>
+            <td>
+                <img class="img-fluid" src="img/11-07-2024_conf_room_vegas_session_0_cut_4_s0_ne.png" style="width:400px"><br>
+            </td>
+            </tr>
+        </table>
+        <!--
+        <div class="text-center">
+        <p class="text-center">Table scrolls horizontally if space is limited.<br>&nbsp;</p>
+        </div>
+        -->
+
+    <!-- <div class="section">
+        <h2>Citation</h2>
+        <hr>
+        <div style="background-color: #e9ecef;">
+  <pre><code>
+      @inproceedings{emoliner2024,
+  title={Gaussian Flow Bridges for audio domain transfer with unpaired data},
+  author={Moliner, Eloi and Braun, Sebastian and Gamper, Hannes},
+  journal={arxiv},
+  notes={Submitted to IEEE IWAENC 2024}
+}
+  </code></pre>
+        </div>
+    </div>
+
+    <hr> -->
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+<script src="js/slider.js"></script>
+</body>
+
+</html>
